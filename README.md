@@ -2,6 +2,8 @@
 - Dynamic blog application platform powered by reusable backend APIs, designed to streamline content creation and management for multiple organizations. 
 - Users can easily integrate our APIs to input and display blog content while benefiting from seamless scalability and flexibility. Our app simplifies development efforts and enhances collaboration, making it a powerful solution for modern blogging needs.
 
+## Sequence diagram:
+![Sequence_diagram](https://github.com/user-attachments/assets/4d5afb7b-bdee-473b-b4e1-f8e7b32b2a58)
 
 ## Best Practices Followed:
 1. Pagination & Sorting
@@ -19,9 +21,10 @@
 
 ## Presentation
 [Click Here](https://www.canva.com/design/DAGX4UPRfzI/l_76CArirCPYAf51BcZz2A/view?utm_content=DAGX4UPRfzI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h082345aeb1)
+
 ## Team Members:
 1. Pradeep Kumar [93017]
-2. Krishnanand Venkatesh Bhat [93001]
+2. Karuna Sharma [93004]
 3. Shivangi Sai [93090]
 4. Harshita Bijlani [93030]
-5. Karuna Sharma [93004]
+5. Krishnanand Venkatesh Bhat [93001]
