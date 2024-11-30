@@ -1,11 +1,13 @@
 package com.springboot.blog.service.impl;
 
 import com.springboot.blog.entity.Category;
+import com.springboot.blog.exception.ResourceAlreadyExistsException;
 import com.springboot.blog.exception.ResourceNotFoundException;
 import com.springboot.blog.payload.CategoryDto;
 import com.springboot.blog.repository.CategoryRepository;
 import com.springboot.blog.service.CategoryService;
 import org.modelmapper.ModelMapper;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,6 +26,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDto addCategory(CategoryDto categoryDto) {
+
+        if (categoryRepository.existsById(categoryDto.getId())) {
+            throw new ResourceAlreadyExistsException(
+                    HttpStatus.CONFLICT,
+                    "Category with ID " + categoryDto.getId() + " already exists!"
+            );
+        }
+
         Category category = modelMapper.map(categoryDto, Category.class);
         Category savedCategory = categoryRepository.save(category);
         return modelMapper.map(savedCategory, CategoryDto.class);
