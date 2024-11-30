@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,6 +44,18 @@ public class AdminController {
         }
     }
 
+    @PatchMapping("/demote/{adminId}")
+    public ResponseEntity<String> demoteAdminToUser(
+            @RequestHeader("adminUsername") String adminUsername,
+            @PathVariable Long adminId) {
+        try {
+            adminService.demoteAdminToUser(adminUsername, adminId);
+            return ResponseEntity.ok("Admin demoted to USER successfully.");
+        } catch (IllegalArgumentException | IllegalStateException ex) {
+            return ResponseEntity.badRequest().body(ex.getMessage());
+        }
+    }
+
     /**
      * Get a list of all non-admin users.
      *
@@ -52,4 +65,10 @@ public class AdminController {
     public ResponseEntity<List<User>> listNonAdminUsers() {
         return ResponseEntity.ok(adminService.listNonAdminUsers());
     }
+
+    @GetMapping("/admins")
+    public ResponseEntity<List<User>> listAllAdmins() {
+        return ResponseEntity.ok(adminService.listAllAdmins());
+    }
+
 }

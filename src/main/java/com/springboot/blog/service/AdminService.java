@@ -23,6 +23,7 @@ public class AdminService {
     private RoleRepository roleRepository;
 
     private static final String ADMIN_ROLE_NAME = "ROLE_ADMIN";
+    private static final String USER_ROLE_NAME = "ROLE_USER";
 
     /**
      * Promotes a user to the ADMIN role.
@@ -65,6 +66,45 @@ public class AdminService {
         }
     }
 
+    @Transactional
+    public void demoteAdminToUser(String adminUsername, Long userId) {
+        // Validate the admin making the request
+        User adminUser = userRepository.findByUsername(adminUsername)
+                .orElseThrow(() -> new IllegalArgumentException("Admin user not found"));
+
+        // Ensure that the admin making the request is actually an admin
+        if (!isAdmin(adminUser)) {
+            throw new IllegalArgumentException("Only admins can demote other admins.");
+        }
+
+        // Fetch the target user
+        User targetUser = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found."));
+
+        // Log the demotion attempt
+        System.out.println("Demoting admin " + targetUser.getUsername() + " to USER by " + adminUser.getUsername());
+
+        // Fetch the user role
+        Role userRole = roleRepository.findByName(USER_ROLE_NAME)
+                .orElseThrow(() -> new IllegalStateException("User role not found."));
+
+        // Ensure the target user is an admin before demotion
+        Role adminRole = roleRepository.findByName(ADMIN_ROLE_NAME)
+                .orElseThrow(() -> new IllegalStateException("Admin role not found."));
+
+        if (targetUser.getRoles().contains(adminRole)) {
+            // Remove the admin role and assign the user role
+            targetUser.getRoles().clear();
+            targetUser.getRoles().add(userRole);
+            userRepository.save(targetUser);
+
+            // Log after role reassignment
+            System.out.println("Admin " + targetUser.getUsername() + " demoted to USER.");
+        } else {
+            throw new IllegalStateException("Target user is not an ADMIN.");
+        }
+    }
+
     /**
      * Lists all users except those with the ADMIN role.
      *
@@ -80,6 +120,15 @@ public class AdminService {
                 .collect(Collectors.toList());
     }
 
+    public List<User> listAllAdmins() {
+        Role adminRole = roleRepository.findByName("ROLE_ADMIN")
+                .orElseThrow(() -> new IllegalArgumentException("Admin role not found."));
+
+        return userRepository.findAll().stream()
+                .filter(user -> user.getRoles().contains(adminRole))
+                .toList();
+    }
+
     /**
      * Checks if a user is an admin.
      *
@@ -90,5 +139,27 @@ public class AdminService {
         // Check if the user has the ROLE_ADMIN role
         return user.getRoles().stream()
                 .anyMatch(role -> ADMIN_ROLE_NAME.equals(role.getName()));
+    }
+
+    public void deregisterUser(String adminUsername, Long userId) {
+        // Validate the admin making the request
+        User adminUser = userRepository.findByUsername(adminUsername)
+                .orElseThrow(() -> new IllegalArgumentException("Admin user not found"));
+
+        if (!isAdmin(adminUser)) {
+            throw new IllegalArgumentException("Only admins can deregister users.");
+        }
+
+        // Fetch the target user
+        User targetUser = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found."));
+
+        // Prevent deregistering another admin
+        if (isAdmin(targetUser)) {
+            throw new IllegalArgumentException("Cannot deregister an admin.");
+        }
+
+        // Delete the user
+        userRepository.delete(targetUser);
     }
 }
