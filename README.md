@@ -14,9 +14,14 @@
 8. Custom Exception 
 9. Customer facing Swagger Documentation
 
+## Swagger Documentation
+[Click Here](http://localhost:8080/swagger-ui/index.html)
+
+## Presentation
+[Click Here](https://www.canva.com/design/DAGX4UPRfzI/l_76CArirCPYAf51BcZz2A/view?utm_content=DAGX4UPRfzI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h082345aeb1)
 ## Team Members:
-1. Pradeep Kumar
-2. Krishnanand Venkatesh Bhat
-3. Shivangi Sai
-4. Harshita Bijlani
-5. Karuna Sharma
+1. Pradeep Kumar [93017]
+2. Krishnanand Venkatesh Bhat [93001]
+3. Shivangi Sai [93090]
+4. Harshita Bijlani [93030]
+5. Karuna Sharma [93004]

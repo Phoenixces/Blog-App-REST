@@ -170,6 +170,7 @@ public class PostServiceImpl implements PostService {
         postDto.setTitle(post.getTitle());
         postDto.setDescription(post.getDescription());
         postDto.setContent(post.getContent());
+        postDto.setCategoryId(post.getCategory().getId());
         if (post.getImage() != null) {
             postDto.setImageUrl(Base64.getEncoder().encodeToString(post.getImage()));
         }
@@ -183,6 +184,7 @@ public class PostServiceImpl implements PostService {
         post.setTitle(postDto.getTitle());
         post.setDescription(postDto.getDescription());
         post.setContent(postDto.getContent());
+
         if (postDto.getImage() != null) {
             post.setImage(postDto.getImage().getBytes());
         }
