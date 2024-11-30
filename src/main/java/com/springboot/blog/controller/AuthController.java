@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Auth")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -22,8 +24,8 @@ public class AuthController {
     }
 
     // Build Login REST API
-    @PostMapping(value = {"/login", "/signin"})
-    public ResponseEntity<JWTAuthResponse> login(@RequestBody LoginDto loginDto){
+    @PostMapping(value = { "/login", "/signin" })
+    public ResponseEntity<JWTAuthResponse> login(@RequestBody LoginDto loginDto) {
         String token = authService.login(loginDto);
 
         JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
@@ -33,8 +35,8 @@ public class AuthController {
     }
 
     // Build Register REST API
-    @PostMapping(value = {"/register", "/signup"})
-    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto){
+    @PostMapping(value = { "/register", "/signup" })
+    public ResponseEntity<String> register(@RequestBody RegisterDto registerDto) {
         String response = authService.register(registerDto);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
