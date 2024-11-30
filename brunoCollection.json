@@ -1,0 +1,670 @@
+{
+  "name": "blogApp",
+  "version": "1",
+  "items": [
+    {
+      "type": "folder",
+      "name": "Auth",
+      "items": [
+        {
+          "type": "http",
+          "name": "Login",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8080/api/auth/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n    \"usernameOrEmail\":\"krishna@gmail.com\",\n    \"password\": \"krishna123\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Register",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8080/api/auth/signup",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n    \"name\":\"krishna\",\n    \"username\":\"krishna\",\n    \"email\": \"krishna@gmail.com\",\n    \"password\": \"krishna123\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "admin-log",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:8080/api/auth/login",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n    \"usernameOrEmail\":\"admin@gmail.com\",\n    \"password\": \"admin\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Users",
+          "seq": 4,
+          "request": {
+            "url": "/users",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "admin-promote",
+          "seq": 6,
+          "request": {
+            "url": "http://localhost:8080/api/admin/promote/2",
+            "method": "PATCH",
+            "headers": [
+              {
+                "name": "adminUsername",
+                "value": "krishna",
+                "enabled": true
+              }
+            ],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Categories",
+      "items": [
+        {
+          "type": "http",
+          "name": "All Categories",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8080/api/v1/categories",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Category byId",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8080/api/v1/categories/1",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Create Category",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:8080/api/v1/categories",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "  {\n    \"id\": 1,\n    \"name\": \"Tech\",\n    \"description\": \"Explore the latest trends, tools, and innovations in technology.\"\n  }",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIzNTU2NDEsImV4cCI6MTczMjk2MDQ0MX0.oQZVapX5FwymAdqEzA3_6C73W4qcBfM97adEYw_8qRuwVt_wYjMkPIaCtBA_Lb4t"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Delete Category",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:8080/api/v1/categories/3",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIxODY5MTUsImV4cCI6MTczMjc5MTcxNX0.L1IqP-UR9pyFU7oXiEp1LXRaLIj6fm69oQpz-krDTn0qBIAeeCDhmUYau0XPRpcm"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Update Category",
+          "seq": 5,
+          "request": {
+            "url": "http://localhost:8080/api/v1/categories/1",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "  {\n    \"id\": 1,\n    \"name\": \"Technology\",\n    \"description\": \"Explore the latest trends, tools, and innovations in technology.\"\n  }",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIyMTA1OTIsImV4cCI6MTczMjgxNTM5Mn0.r0XlOEq6vH-XZaDMzjvh5rWusOGjv_Dp9C12dIEfOhje72frND9eYYgs86QQzhDw"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Comment",
+      "items": [
+        {
+          "type": "http",
+          "name": "All comments for PostId",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8080/api/v1/posts/1/comments",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Comment by Id for Post",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:8080/api/v1/posts/1/comments/1",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Create For PostId",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8080/api/v1/posts/1/comments",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"name\":\"krishna\",\n  \"email\":\"krishna@gmail.com\",\n  \"body\":\"Liked this blog\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJrcmlzaG5hQGdtYWlsLmNvbSIsImlhdCI6MTczMjM1NTM1MCwiZXhwIjoxNzMyOTYwMTUwfQ.serv-YOwwiFTluTFfiN2wfwkFnvoYkRt6g5RQ8LE2Jvrmxr2F3lY12REv9GpTkLN"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Delete comment for post",
+          "seq": 5,
+          "request": {
+            "url": "http://localhost:8080/api/v1/posts/1/comments/2",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTczMjIwOTY3NCwiZXhwIjoxNzMyODE0NDc0fQ.9ST8DTgA-LRaZUq0KL-tf5NdE1A6tP_-4XbZGuuC_E6J2il72a2F6go9d0wgk-uP"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Update comment for post",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:8080/api/v1/posts/1/comments/1",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"name\":\"user\",\n  \"email\":\"user@gmail.com\",\n  \"body\":\"Too Good to be true\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTczMjIwOTY3NCwiZXhwIjoxNzMyODE0NDc0fQ.9ST8DTgA-LRaZUq0KL-tf5NdE1A6tP_-4XbZGuuC_E6J2il72a2F6go9d0wgk-uP"
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Post",
+      "items": [
+        {
+          "type": "http",
+          "name": "Create Post",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8080/api/posts",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n    \"title\": \"The Future of AI in Tech\",\n    \"description\": \"Exploring how AI is revolutionizing the tech industry.\",\n    \"content\": \"Artificial Intelligence is rapidly changing how we interact with technology. From machine learning to robotics, the advancements are groundbreaking. This post dives deep into the latest trends and their impact on society.\",\n    \"categoryId\": 1\n  }",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIzNTU2NDEsImV4cCI6MTczMjk2MDQ0MX0.oQZVapX5FwymAdqEzA3_6C73W4qcBfM97adEYw_8qRuwVt_wYjMkPIaCtBA_Lb4t"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Delete Post",
+          "seq": 5,
+          "request": {
+            "url": "http://localhost:8080/api/posts/1",
+            "method": "DELETE",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIxODY5MTUsImV4cCI6MTczMjc5MTcxNX0.L1IqP-UR9pyFU7oXiEp1LXRaLIj6fm69oQpz-krDTn0qBIAeeCDhmUYau0XPRpcm"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Get All Posts",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:8080/api/posts",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Post byId",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:8080/api/posts/1",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "Update Post",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8080/api/posts/1",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "json",
+              "json": "{\n  \"title\": \"Vietnam\",\n  \"description\": \"Vietnamese Culture\",\n  \"content\": \"Known For Tourism\",\n  \"categoryId\":\"3\"\n}",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "bearer",
+              "bearer": {
+                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIxODY5MTUsImV4cCI6MTczMjc5MTcxNX0.L1IqP-UR9pyFU7oXiEp1LXRaLIj6fm69oQpz-krDTn0qBIAeeCDhmUYau0XPRpcm"
+              }
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "postPageSize",
+          "seq": 6,
+          "request": {
+            "url": "http://localhost:8080/api/posts?pageSize=20",
+            "method": "GET",
+            "headers": [],
+            "params": [
+              {
+                "name": "pageSize",
+                "value": "20",
+                "type": "query",
+                "enabled": true
+              }
+            ],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "type": "folder",
+      "name": "Logo",
+      "items": [
+        {
+          "type": "http",
+          "name": "Update",
+          "seq": 3,
+          "request": {
+            "url": "http://localhost:8080/api/v2/logo/9",
+            "method": "PUT",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "getLogo",
+          "seq": 2,
+          "request": {
+            "url": "http://localhost:8080/api/logo/9",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "getImage",
+          "seq": 4,
+          "request": {
+            "url": "http://localhost:8080/api/v2/logo/9/image",
+            "method": "GET",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        },
+        {
+          "type": "http",
+          "name": "upload logo",
+          "seq": 1,
+          "request": {
+            "url": "http://localhost:8080/api/v2/logo/upload",
+            "method": "POST",
+            "headers": [],
+            "params": [],
+            "body": {
+              "mode": "none",
+              "formUrlEncoded": [],
+              "multipartForm": []
+            },
+            "script": {},
+            "vars": {},
+            "assertions": [],
+            "tests": "",
+            "auth": {
+              "mode": "none"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "environments": [],
+  "brunoConfig": {
+    "version": "1",
+    "name": "blogApp",
+    "type": "collection",
+    "ignore": [
+      "node_modules",
+      ".git"
+    ]
+  }
+}
