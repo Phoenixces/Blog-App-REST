@@ -71,7 +71,7 @@ public class PostController {
     // create blog post rest api
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping(consumes={MediaType.MULTIPART_FORM_DATA_VALUE},produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<PostResponseWrapper> createPost(@Valid @ModelAttribute PostDto postDto) throws IOException {
+    public ResponseEntity<PostDto> createPost(@Valid @ModelAttribute PostDto postDto) throws IOException {
         return new ResponseEntity<>(postService.createPost(postDto), HttpStatus.CREATED);
     }
 

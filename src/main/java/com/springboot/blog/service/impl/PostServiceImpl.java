@@ -1,13 +1,11 @@
 package com.springboot.blog.service.impl;
 
 import com.springboot.blog.entity.Category;
+import com.springboot.blog.entity.Comment;
 import com.springboot.blog.entity.Post;
 import com.springboot.blog.exception.InvalidImageException;
 import com.springboot.blog.exception.ResourceNotFoundException;
-import com.springboot.blog.payload.ImageValidationResponse;
-import com.springboot.blog.payload.PostDto;
-import com.springboot.blog.payload.PostResponse;
-import com.springboot.blog.payload.PostResponseWrapper;
+import com.springboot.blog.payload.*;
 import com.springboot.blog.repository.CategoryRepository;
 import com.springboot.blog.repository.PostRepository;
 import com.springboot.blog.service.PostService;
@@ -15,7 +13,6 @@ import org.modelmapper.ModelMapper;
 
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.data.domain.Page;
@@ -33,10 +30,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.Base64;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -56,7 +50,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostResponseWrapper createPost(PostDto postDto) throws IOException {
+    public PostDto createPost(PostDto postDto) throws IOException {
         MultipartFile imageFile = postDto.getImage();
         ImageValidationResponse validationResponse = null;
 
@@ -76,7 +70,7 @@ public class PostServiceImpl implements PostService {
             Post newPost = postRepository.save(post);
             // convert entity to DTO
             PostDto postResponse = mapToDTO(newPost);
-            return new PostResponseWrapper(validationResponse,postResponse);
+            return postResponse;
     }
 
     @Override
@@ -170,9 +164,19 @@ public class PostServiceImpl implements PostService {
         postDto.setTitle(post.getTitle());
         postDto.setDescription(post.getDescription());
         postDto.setContent(post.getContent());
+        postDto.setCategoryId(post.getCategory().getId());
         if (post.getImage() != null) {
             postDto.setImageUrl(Base64.getEncoder().encodeToString(post.getImage()));
         }
+        postDto.setComments(post.getComments().stream().map(comment -> {
+            CommentDto commentDto = new CommentDto();
+            commentDto.setId(comment.getId());
+            commentDto.setName(comment.getName());
+            commentDto.setEmail(comment.getEmail());
+            commentDto.setBody(comment.getBody());
+            return commentDto;
+        }).collect(Collectors.toSet()));
+
         return postDto;
     }
 

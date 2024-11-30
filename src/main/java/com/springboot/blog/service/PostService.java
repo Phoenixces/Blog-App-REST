@@ -2,13 +2,12 @@ package com.springboot.blog.service;
 
 import com.springboot.blog.payload.PostDto;
 import com.springboot.blog.payload.PostResponse;
-import com.springboot.blog.payload.PostResponseWrapper;
 
 import java.io.IOException;
 import java.util.List;
 
 public interface PostService {
-    PostResponseWrapper createPost(PostDto postDto) throws IOException;
+    PostDto createPost(PostDto postDto) throws IOException;
 
     PostResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir);
 
