@@ -4,10 +4,7 @@ import com.springboot.blog.entity.Category;
 import com.springboot.blog.entity.Post;
 import com.springboot.blog.exception.InvalidImageException;
 import com.springboot.blog.exception.ResourceNotFoundException;
-import com.springboot.blog.payload.ImageValidationResponse;
-import com.springboot.blog.payload.PostDto;
-import com.springboot.blog.payload.PostResponse;
-import com.springboot.blog.payload.PostResponseWrapper;
+import com.springboot.blog.payload.*;
 import com.springboot.blog.repository.CategoryRepository;
 import com.springboot.blog.repository.PostRepository;
 import com.springboot.blog.service.PostService;
@@ -56,7 +53,7 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
-    public PostResponseWrapper createPost(PostDto postDto) throws IOException {
+    public PostDto createPost(PostDto postDto) throws IOException {
         MultipartFile imageFile = postDto.getImage();
         ImageValidationResponse validationResponse = null;
 
@@ -76,7 +73,7 @@ public class PostServiceImpl implements PostService {
             Post newPost = postRepository.save(post);
             // convert entity to DTO
             PostDto postResponse = mapToDTO(newPost);
-            return new PostResponseWrapper(validationResponse,postResponse);
+            return postResponse;
     }
 
     @Override
@@ -174,6 +171,15 @@ public class PostServiceImpl implements PostService {
         if (post.getImage() != null) {
             postDto.setImageUrl(Base64.getEncoder().encodeToString(post.getImage()));
         }
+        postDto.setComments(post.getComments().stream().map(comment -> {
+            CommentDto commentDto = new CommentDto();
+            commentDto.setId(comment.getId());
+            commentDto.setName(comment.getName());
+            commentDto.setEmail(comment.getEmail());
+            commentDto.setBody(comment.getBody());
+            return commentDto;
+        }).collect(Collectors.toSet()));
+
         return postDto;
     }
 
