@@ -140,26 +140,4 @@ public class AdminService {
         return user.getRoles().stream()
                 .anyMatch(role -> ADMIN_ROLE_NAME.equals(role.getName()));
     }
-
-    public void deregisterUser(String adminUsername, Long userId) {
-        // Validate the admin making the request
-        User adminUser = userRepository.findByUsername(adminUsername)
-                .orElseThrow(() -> new IllegalArgumentException("Admin user not found"));
-
-        if (!isAdmin(adminUser)) {
-            throw new IllegalArgumentException("Only admins can deregister users.");
-        }
-
-        // Fetch the target user
-        User targetUser = userRepository.findById(userId)
-                .orElseThrow(() -> new IllegalArgumentException("User not found."));
-
-        // Prevent deregistering another admin
-        if (isAdmin(targetUser)) {
-            throw new IllegalArgumentException("Cannot deregister an admin.");
-        }
-
-        // Delete the user
-        userRepository.delete(targetUser);
-    }
 }
