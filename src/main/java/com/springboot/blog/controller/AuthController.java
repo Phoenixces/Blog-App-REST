@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "Auth")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {
@@ -28,7 +30,6 @@ public class AuthController {
     @PostMapping(value = {"/login", "/signin"})
     public ResponseEntity<JWTAuthResponse> login(@Valid @RequestBody LoginDto loginDto){
         String token = authService.login(loginDto);
-
         JWTAuthResponse jwtAuthResponse = new JWTAuthResponse();
         jwtAuthResponse.setAccessToken(token);
 

@@ -16,6 +16,9 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import java.time.Duration;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Comment-v1")
 
 @RestController
 @RequestMapping("/api/v1")
@@ -24,7 +27,7 @@ public class CommentController {
     private CommentService commentService;
     private final StringRedisTemplate redisTemplate;
 
-    public CommentController(CommentService commentService,StringRedisTemplate redisTemplate) {
+    public CommentController(CommentService commentService, StringRedisTemplate redisTemplate) {
         this.commentService = commentService;
         this.redisTemplate = redisTemplate;
     }
@@ -44,17 +47,17 @@ public class CommentController {
         }
 
         // If more than 5 requests are made within the time window
-        return true;  // Rate limit exceeded
+        return true; // Rate limit exceeded
     }
 
     @PostMapping("/posts/{postId}/comments")
     public ResponseEntity<CommentDto> createComment(@PathVariable(value = "postId") long postId,
-                                                    @Valid @RequestBody CommentDto commentDto){
+            @Valid @RequestBody CommentDto commentDto) {
         return new ResponseEntity<>(commentService.createComment(postId, commentDto), HttpStatus.CREATED);
     }
 
     @GetMapping("/posts/{postId}/comments")
-    public List<CommentDto> getCommentsByPostId(@PathVariable(value = "postId") Long postId){
+    public List<CommentDto> getCommentsByPostId(@PathVariable(value = "postId") Long postId) {
         String userId = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
                 .getRequest()
                 .getRemoteAddr();
@@ -66,22 +69,22 @@ public class CommentController {
 
     @GetMapping("/posts/{postId}/comments/{id}")
     public ResponseEntity<CommentDto> getCommentById(@PathVariable(value = "postId") Long postId,
-                                                     @PathVariable(value = "id") Long commentId){
+            @PathVariable(value = "id") Long commentId) {
         CommentDto commentDto = commentService.getCommentById(postId, commentId);
         return new ResponseEntity<>(commentDto, HttpStatus.OK);
     }
 
     @PutMapping("/posts/{postId}/comments/{id}")
     public ResponseEntity<CommentDto> updateComment(@PathVariable(value = "postId") Long postId,
-                                                    @PathVariable(value = "id") Long commentId,
-                                                    @Valid @RequestBody CommentDto commentDto){
+            @PathVariable(value = "id") Long commentId,
+            @Valid @RequestBody CommentDto commentDto) {
         CommentDto updatedComment = commentService.updateComment(postId, commentId, commentDto);
         return new ResponseEntity<>(updatedComment, HttpStatus.OK);
     }
 
     @DeleteMapping("/posts/{postId}/comments/{id}")
     public ResponseEntity<String> deleteComment(@PathVariable(value = "postId") Long postId,
-                                                @PathVariable(value = "id") Long commentId){
+            @PathVariable(value = "id") Long commentId) {
         commentService.deleteComment(postId, commentId);
         return new ResponseEntity<>("Comment deleted successfully", HttpStatus.OK);
     }

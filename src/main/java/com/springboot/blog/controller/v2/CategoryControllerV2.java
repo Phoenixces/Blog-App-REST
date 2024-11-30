@@ -12,8 +12,9 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
-@Tag(name = "Category Management", description = "Endpoints for managing categories (v2 API)")
+@Tag(name = "Category-v2")
 @RestController
 @RequestMapping("/api/v2/categories")
 public class CategoryControllerV2 {
@@ -35,7 +36,7 @@ public class CategoryControllerV2 {
     @PatchMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CategoryDto> patchCategory(@RequestBody CategoryDto categoryDto,
-                                                     @PathVariable Long id) {
+            @PathVariable Long id) {
         CategoryDto updatedCategory = categoryService.partialUpdateCategory(categoryDto, id);
         return ResponseEntity.ok(updatedCategory);
     }

@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.springboot.blog.entity.User;
 import com.springboot.blog.service.AdminService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
+@Tag(name = "AdminService")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {
