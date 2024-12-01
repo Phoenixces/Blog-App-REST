@@ -230,7 +230,7 @@
             "auth": {
               "mode": "bearer",
               "bearer": {
-                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIxODY5MTUsImV4cCI6MTczMjc5MTcxNX0.L1IqP-UR9pyFU7oXiEp1LXRaLIj6fm69oQpz-krDTn0qBIAeeCDhmUYau0XPRpcm"
+                "token": ""
               }
             }
           }
@@ -257,7 +257,7 @@
             "auth": {
               "mode": "bearer",
               "bearer": {
-                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIyMTA1OTIsImV4cCI6MTczMjgxNTM5Mn0.r0XlOEq6vH-XZaDMzjvh5rWusOGjv_Dp9C12dIEfOhje72frND9eYYgs86QQzhDw"
+                "token": ""
               }
             }
           }
@@ -336,60 +336,7 @@
             "auth": {
               "mode": "bearer",
               "bearer": {
-                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJrcmlzaG5hQGdtYWlsLmNvbSIsImlhdCI6MTczMjM1NTM1MCwiZXhwIjoxNzMyOTYwMTUwfQ.serv-YOwwiFTluTFfiN2wfwkFnvoYkRt6g5RQ8LE2Jvrmxr2F3lY12REv9GpTkLN"
-              }
-            }
-          }
-        },
-        {
-          "type": "http",
-          "name": "Delete comment for post",
-          "seq": 5,
-          "request": {
-            "url": "http://localhost:8080/api/v1/posts/1/comments/2",
-            "method": "DELETE",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "none",
-              "formUrlEncoded": [],
-              "multipartForm": []
-            },
-            "script": {},
-            "vars": {},
-            "assertions": [],
-            "tests": "",
-            "auth": {
-              "mode": "bearer",
-              "bearer": {
-                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTczMjIwOTY3NCwiZXhwIjoxNzMyODE0NDc0fQ.9ST8DTgA-LRaZUq0KL-tf5NdE1A6tP_-4XbZGuuC_E6J2il72a2F6go9d0wgk-uP"
-              }
-            }
-          }
-        },
-        {
-          "type": "http",
-          "name": "Update comment for post",
-          "seq": 4,
-          "request": {
-            "url": "http://localhost:8080/api/v1/posts/1/comments/1",
-            "method": "PUT",
-            "headers": [],
-            "params": [],
-            "body": {
-              "mode": "json",
-              "json": "{\n  \"name\":\"user\",\n  \"email\":\"user@gmail.com\",\n  \"body\":\"Too Good to be true\"\n}",
-              "formUrlEncoded": [],
-              "multipartForm": []
-            },
-            "script": {},
-            "vars": {},
-            "assertions": [],
-            "tests": "",
-            "auth": {
-              "mode": "bearer",
-              "bearer": {
-                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ1c2VyQGdtYWlsLmNvbSIsImlhdCI6MTczMjIwOTY3NCwiZXhwIjoxNzMyODE0NDc0fQ.9ST8DTgA-LRaZUq0KL-tf5NdE1A6tP_-4XbZGuuC_E6J2il72a2F6go9d0wgk-uP"
+                "token": ""
               }
             }
           }
@@ -422,7 +369,7 @@
             "auth": {
               "mode": "bearer",
               "bearer": {
-                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIzNTU2NDEsImV4cCI6MTczMjk2MDQ0MX0.oQZVapX5FwymAdqEzA3_6C73W4qcBfM97adEYw_8qRuwVt_wYjMkPIaCtBA_Lb4t"
+                "token": ""
               }
             }
           }
@@ -448,7 +395,7 @@
             "auth": {
               "mode": "bearer",
               "bearer": {
-                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIxODY5MTUsImV4cCI6MTczMjc5MTcxNX0.L1IqP-UR9pyFU7oXiEp1LXRaLIj6fm69oQpz-krDTn0qBIAeeCDhmUYau0XPRpcm"
+                "token": ""
               }
             }
           }
@@ -521,7 +468,7 @@
             "auth": {
               "mode": "bearer",
               "bearer": {
-                "token": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJpYXQiOjE3MzIxODY5MTUsImV4cCI6MTczMjc5MTcxNX0.L1IqP-UR9pyFU7oXiEp1LXRaLIj6fm69oQpz-krDTn0qBIAeeCDhmUYau0XPRpcm"
+                "token": ""
               }
             }
           }
