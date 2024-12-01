@@ -20,7 +20,7 @@ Database name - myblog
 ## 4. Configure Admin
 User below Insert SQL statements to insert records into roles table:
 ```sql
-> use .env file to set Admin for App
+> use .env file under App Resources to set Admin for App
 ```
 ## 6. Start Redis 
 User below cmds:
