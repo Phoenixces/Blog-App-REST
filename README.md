@@ -22,6 +22,9 @@
 ## Presentation
 [Click Here](https://www.canva.com/design/DAGX4UPRfzI/l_76CArirCPYAf51BcZz2A/view?utm_content=DAGX4UPRfzI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h082345aeb1)
 
+## Running Application
+> Refer run.md
+
 ## Team Members:
 1. Pradeep Kumar [93017]
 2. Karuna Sharma [93004]
