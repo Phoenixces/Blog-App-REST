@@ -17,7 +17,7 @@
 9. Customer facing Swagger Documentation
 
 ## Swagger Documentation
-Local: [Click Here](http://localhost:8080/swagger-ui/index.html)
+Local: [Click Here](http://localhost:8080/swagger-ui/index.html)<br>
 Deployed: [Click Here](https://app.swaggerhub.com/apis/KARUNASHARMA21032002/SwaggerBlog/v0)
 
 ## Presentation
